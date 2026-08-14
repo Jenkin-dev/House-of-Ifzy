@@ -1,29 +1,19 @@
-/* ============================================================
-   HOUSE OF IFZY
-
-   Everything you edit lives in the two blocks below: SHOP and
-   PRODUCTS. Nothing further down needs touching.
-   ============================================================ */
-
 const SHOP = {
   name: "House of Ifzy",
   tagline: "Dare to shine flawlessly",
   city: "Lagos",
   currency: "\u20A6",
 
-  // country code first, no plus sign, no spaces
   whatsapp: "2349023767611",
   phone: "+234 902 376 7611",
   email: "olusiblessing96@gmail.com",
 
   instagram: "house_of_ifzy",
 
-  // TODO: paste the real Facebook page link here. This one is a guess
-  // from the page name, so open it once and check it lands correctly.
-  facebook: null,
+  facebook:
+    "https://www.facebook.com/profile.php?id=61571944641751&mibextid=rS40aB7S9Ucbxw6v",
   facebookName: "House of Ifzy",
 
-  // the lines that scroll across the dark strip. Keep them true.
   notices: [
     "Delivery within Lagos in 5 days or less",
     "Nationwide shipping",
@@ -32,8 +22,7 @@ const SHOP = {
   ],
 };
 
-/* Categories are the materials she actually sells. The colour of each
-   one shows on its product cards and filter underline. */
+/* Categories are the materials she actually sells.*/
 const CATEGORIES = [
   { key: "jewellery", label: "Jewellery" },
   { key: "watches", label: "Watches" },
@@ -42,17 +31,6 @@ const CATEGORIES = [
   { key: "footwear", label: "Footwear" },
 ];
 
-/* ------------------------------------------------------------
-   PRODUCTS
-
-   images: put your photo files in the images folder next to this
-   one, then list them here. The first photo is the one shown on
-   the card. The rest appear when someone taps it.
-
-   Use lowercase filenames with hyphens and no spaces.
-
-   price: a number like 15000, or null to show "Message for price".
-   ------------------------------------------------------------ */
 const PRODUCTS = [
   {
     name: "Chrome Eyeglass Set",
@@ -220,11 +198,6 @@ const PRODUCTS = [
   },
 ];
 
-/* ============================================================
-   Below this line is the machinery. You should not need to
-   change any of it.
-   ============================================================ */
-
 const $ = (sel, root = document) => root.querySelector(sel);
 const $$ = (sel, root = document) => Array.from(root.querySelectorAll(sel));
 
@@ -267,7 +240,7 @@ const orderLink = (product) =>
       ". Is it available?",
   );
 
-/* give every product a stable id so the viewer can find it again */
+/*this give every product a stable id so the viewer can find it again */
 PRODUCTS.forEach((product, index) => {
   product.id = "p" + index;
   if (!Array.isArray(product.images)) product.images = [];

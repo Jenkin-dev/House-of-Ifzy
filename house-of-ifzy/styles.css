@@ -1,10 +1,3 @@
-/* ============================================================
-   HOUSE OF IFZY
-   Palette is drawn from the goods themselves: cream and sand for
-   the surfaces, cocoa and noir for depth, gold for the hallmark.
-   Each category carries the tone of its own material.
-   ============================================================ */
-
 :root {
   /* surfaces */
   --noir: #14100d;
@@ -186,6 +179,7 @@ h2 {
 .btn-fill {
   background: var(--noir);
   color: var(--cream);
+  text-align: center;
 }
 .btn-fill:hover {
   background: var(--gold);
@@ -194,15 +188,18 @@ h2 {
 .btn-line {
   border-color: var(--ink);
   color: var(--ink);
+  border-radius: 25cap;
 }
 .btn-line:hover {
-  background: var(--ink);
+  background: green;
   color: var(--cream);
 }
 .btn-sm {
   padding: 12px 20px;
   font-size: 11px;
   letter-spacing: 0.14em;
+  background-color: green;
+  border-radius: 25cap;
 }
 .btn-block {
   width: 100%;
