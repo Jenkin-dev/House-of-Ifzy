@@ -20,7 +20,7 @@ const SHOP = {
 
   // TODO: paste the real Facebook page link here. This one is a guess
   // from the page name, so open it once and check it lands correctly.
-  facebook: "https://www.facebook.com/houseofifzy",
+  facebook: null,
   facebookName: "House of Ifzy",
 
   // the lines that scroll across the dark strip. Keep them true.
@@ -107,6 +107,27 @@ const PRODUCTS = [
     inStock: true,
   },
   {
+    name: "Bangles",
+    category: "jewellery",
+    price: null,
+    note: null,
+    description: null,
+    images: ["images/Bangles-1.jpeg", "images/Bangles-2.jpeg"],
+    inStock: true,
+  },
+  {
+    name: "VC Handchain and Ring",
+    category: "jewellery",
+    price: null,
+    note: null,
+    description: null,
+    images: [
+      "images/VC-HandChain-and-ring-1.jpeg",
+      "images/VC-HandChain-and-ring-2.jpeg",
+    ],
+    inStock: true,
+  },
+  {
     name: "Leather and Steel Bracelet",
     category: "jewellery",
     price: null,
@@ -177,6 +198,24 @@ const PRODUCTS = [
     note: "Size: 40-46",
     description: null,
     images: ["images/LV-shoes.jpeg"],
+    inStock: true,
+  },
+  {
+    name: "Balenciaga Footwear",
+    category: "footwear",
+    price: null,
+    note: "Size: 41-46",
+    description: null,
+    images: ["images/Balenciaga-shoes.jpeg"],
+    inStock: true,
+  },
+  {
+    name: "Shoe",
+    category: "footwear",
+    price: null,
+    note: "Size: 40-46",
+    description: null,
+    images: ["images/Shoe-1.jpeg"],
     inStock: true,
   },
 ];
