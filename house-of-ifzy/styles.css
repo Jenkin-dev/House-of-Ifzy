@@ -191,14 +191,14 @@ h2 {
   border-radius: 25cap;
 }
 .btn-line:hover {
-  background: green;
+  background: #008040;
   color: var(--cream);
 }
 .btn-sm {
   padding: 12px 20px;
   font-size: 11px;
   letter-spacing: 0.14em;
-  background-color: green;
+  background-color: #008040;
   border-radius: 25cap;
 }
 .btn-block {
