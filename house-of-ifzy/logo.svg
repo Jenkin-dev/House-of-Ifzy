@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img" aria-label="House of Ifzy">
+  <title>House of Ifzy</title>
+
+  <!-- outer ring -->
+  <circle cx="60" cy="60" r="55" fill="none" stroke="#B08D3F" stroke-width="1"/>
+  <circle cx="60" cy="60" r="51" fill="none" stroke="#B08D3F" stroke-width="2.4"/>
+
+  <!-- hallmark ticks at the quarters -->
+  <g fill="#B08D3F">
+    <path d="M60 20.5 L62.6 23.1 L60 25.7 L57.4 23.1 Z"/>
+    <path d="M99.5 60 L96.9 62.6 L94.3 60 L96.9 57.4 Z"/>
+    <path d="M60 99.5 L57.4 96.9 L60 94.3 L62.6 96.9 Z"/>
+    <path d="M20.5 60 L23.1 57.4 L25.7 60 L23.1 62.6 Z"/>
+  </g>
+
+  <!-- HI monogram, drawn as a geometric serif -->
+  <g fill="#B08D3F">
+    <rect x="37" y="43" width="5" height="34"/>
+    <rect x="56" y="43" width="5" height="34"/>
+    <rect x="37" y="57.7" width="24" height="3.4"/>
+    <rect x="32" y="43" width="15" height="2.6"/>
+    <rect x="32" y="74.4" width="15" height="2.6"/>
+    <rect x="51" y="43" width="15" height="2.6"/>
+    <rect x="51" y="74.4" width="15" height="2.6"/>
+    <rect x="78" y="43" width="5" height="34"/>
+    <rect x="73" y="43" width="15" height="2.6"/>
+    <rect x="73" y="74.4" width="15" height="2.6"/>
+  </g>
+</svg>
