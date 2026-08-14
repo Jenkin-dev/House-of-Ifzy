@@ -79,7 +79,15 @@ const PRODUCTS = [
     note: "Boxed, ready to gift",
     description:
       "A slim dress watch made for everyday wear, presented in its own box.",
-    images: ["images/scottie-watch-1.jpg", "images/scottie-watch-2.jpg"],
+    images: [
+      "images/scottie-watch-1.jpeg",
+      "images/scottie-watch-2.jpeg",
+      "images/scottie-watch-3.jpeg",
+      "images/scottie-watch-4.jpeg",
+      "images/scottie-watch-5.jpeg",
+      "images/scottie-watch-6.jpeg",
+      "images/scottie-watch-7.jpeg",
+    ],
     inStock: true,
   },
   {
@@ -89,7 +97,13 @@ const PRODUCTS = [
     note: "Unisex, does not tarnish",
     description:
       "Solid stainless steel that keeps its shine and holds up to daily wear.",
-    images: ["images/steel-bracelet-1.jpg", "images/steel-bracelet-2.jpg"],
+    images: [
+      "images/steel-bracelet-1.jpeg",
+      "images/steel-bracelet-2.jpeg",
+      "images/steel-bracelet-3.jpeg",
+      "images/steel-bracelet-4.jpeg",
+      "images/steel-bracelet-5.jpeg",
+    ],
     inStock: true,
   },
   {
@@ -99,27 +113,70 @@ const PRODUCTS = [
     note: "Leather band with a steel clasp",
     description:
       "Soft leather paired with a brushed steel clasp. Understated enough for work, warm enough for evenings.",
-    images: ["images/leather-steel-bracelet-1.jpg"],
+    images: [
+      "images/leather-steel-bracelet-1.jpeg",
+      "images/leather-steel-bracelet-2.jpeg",
+      "images/leather-steel-bracelet-3.jpeg",
+    ],
+    inStock: true,
+  },
+  {
+    name: "Necklace without Pendant",
+    category: "jewellery",
+    price: null,
+    note: "Elegance in Every Petal",
+    description:
+      "Make an unforgettable entrance with this breathtaking necklace and matching drop earrings designed to perfectly complement your dress and add an instant touch of high-utility sparkle.",
+    images: ["images/standalone necklace.jpeg"],
+    inStock: true,
+  },
+  {
+    name: "3 Ball Stainless Steel Necklace and Earrings Set",
+    category: "jewellery",
+    price: null,
+    note: "Effortless Triple-Layer Elegance",
+    description:
+      "Make a clean statement with a tarnish-resistant, layered stainless steel chain that effortlessly shifts from casual daywear to high-fashion evening glam.",
+    images: ["images/Stainless-Steel-Necklace.jpeg"],
+    inStock: true,
+  },
+  {
+    name: "Swiss Lace",
+    category: "hair",
+    price: null,
+    note: "Flawless Melt, Effortless Glam",
+    description:
+      "Achieve the ultimate seamless look with this premium, bone-straight HD lace front wig, expertly crafted with a pre-plucked hairline and rich chocolate-brown strands that mimic natural hair movement perfectly.",
+    images: ["images/Swiss-Lace.jpeg"],
     inStock: true,
   },
   {
     name: "Wig",
     category: "hair",
     price: null,
-    note: "Add the length, texture and cap size here",
+    note: "Flawless Realism, Effortless Style",
     description:
-      "Replace this line with the real details: length, texture, lace type and cap size.",
-    images: ["images/wig-1.jpg", "images/wig-2.jpg"],
+      "Turn heads with a show-stopping wig engineered for exceptional fullness, rich dimension, and versatile heat styling to match your every mood.",
+    images: ["images/Cajun.jpeg"],
     inStock: true,
   },
   {
-    name: "Shoes",
+    name: "Vietnam Bone Straight Wig",
+    category: "hair",
+    price: null,
+    note: "Flawless Realism, Effortless Style",
+    description:
+      "Turn heads instantly with the razor-sharp alignment of our Vietnamese bone straight hair, featuring ultra-dense cuticles that retain a flawless, silky texture without requiring constant heat styling.",
+    images: ["images/Vietnam-Bone.jpeg"],
+    inStock: true,
+  },
+  {
+    name: "Louis Vuitton Shoes",
     category: "footwear",
     price: null,
-    note: "Add the available sizes here",
-    description:
-      "Replace this line with the real details: style, colours and the sizes in stock.",
-    images: ["images/shoes-1.jpg"],
+    note: "Size: 40-46",
+    description: null,
+    images: ["images/LV-shoes.jpeg"],
     inStock: true,
   },
 ];
