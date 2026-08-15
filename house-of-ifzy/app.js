@@ -84,6 +84,51 @@ const PRODUCTS = [
     ],
     inStock: true,
   },
+
+  {
+    name: "Complete Set Sparkling Piece",
+    category: "jewellery",
+    price: null,
+    note: "Includes necklace, earrings, and bracelet",
+    description:
+      "A complete set of sparkling pieces that includes a necklace, earrings, and bracelet. Perfect for special occasions or as a gift.",
+    images: [
+      "images/complete-set-1.jpeg",
+      "images/complete-set-2.jpeg",
+      "images/complete-set-3.jpeg",
+      "images/complete-set-4.jpeg",
+    ],
+    inStock: true,
+  },
+  {
+    name: "Exquisite Jewellery Piece",
+    category: "jewellery",
+    price: null,
+    note: "Exquisite piece designed to make a statement.",
+    description:
+      "An exquisite jewellery piece designed to make a statement and add a touch of elegance to any outfit.",
+    images: [
+      "images/exquisite-piece-1.jpeg",
+      "images/exquisite-piece-2.jpeg",
+      "images/exquisite-piece-3.jpeg",
+      "images/exquisite-piece-4.jpeg",
+    ],
+    inStock: true,
+  },
+  {
+    name: "Floral Earrings",
+    category: "jewellery",
+    price: null,
+    note: "Delicate floral design, perfect for any occasion.",
+    description:
+      "Delicate floral design that adds a touch of elegance to any outfit.",
+    images: [
+      "images/floral-earrings-1.jpeg",
+      "images/floral-earrings-2.jpeg",
+      "images/floral-earrings-3.jpeg",
+    ],
+    inStock: true,
+  },
   {
     name: "Bangles",
     category: "jewellery",
@@ -157,6 +202,16 @@ const PRODUCTS = [
     description:
       "Turn heads with a show-stopping wig engineered for exceptional fullness, rich dimension, and versatile heat styling to match your every mood.",
     images: ["images/Cajun.jpeg"],
+    inStock: true,
+  },
+  {
+    name: "Flip Bounce Wig",
+    category: "hair",
+    price: null,
+    note: "Flawless Realism, Effortless Style",
+    description:
+      "Turn heads with a show-stopping wig engineered for exceptional fullness, rich dimension, and versatile heat styling to match your every mood.",
+    images: ["images/Wig-2.jpeg"],
     inStock: true,
   },
   {
