@@ -22,6 +22,8 @@ const SHOP = {
   ],
 };
 
+const SHEET_URL =
+  "https://docs.google.com/spreadsheets/d/e/2PACX-1vReGKRJu5HsqpFN1claodev6n_HxxhWr3RayMJKwAbNyR4DYGTwpznMYXYr1Sw1q18MOUgXcrvUoHfB/pub?output=csv";
 /* Categories are the materials she actually sells.*/
 const CATEGORIES = [
   { key: "jewellery", label: "Jewellery" },
@@ -31,227 +33,81 @@ const CATEGORIES = [
   { key: "footwear", label: "Footwear" },
 ];
 
-const PRODUCTS = [
-  {
-    name: "Chrome Eyeglass Set",
-    category: "eyewear",
-    price: null,
-    note: "Unisex frames, boxed",
-    description:
-      "A chrome frame set that suits most face shapes, finished with a clean metal bridge. Comes boxed and ready to gift.",
-    images: [
-      "images/chrome-eyeglass-set-1.jpeg",
-      "images/chrome-eyeglass-set-2.jpeg",
-      "images/chrome-eyeglass-set-3.jpeg",
-      "images/chrome-eyeglass-set-4.jpeg",
-      "images/chrome-eyeglass-set-5.jpeg",
-      "images/chrome-eyeglass-set-6.jpeg",
-      "images/chrome-eyeglass-set-7.jpeg",
-    ],
-    inStock: true,
-  },
-  {
-    name: "Scottie Watch for Her",
-    category: "watches",
-    price: null,
-    note: "Boxed, ready to gift",
-    description:
-      "A slim dress watch made for everyday wear, presented in its own box.",
-    images: [
-      "images/scottie-watch-1.jpeg",
-      "images/scottie-watch-2.jpeg",
-      "images/scottie-watch-3.jpeg",
-      "images/scottie-watch-4.jpeg",
-      "images/scottie-watch-5.jpeg",
-      "images/scottie-watch-6.jpeg",
-      "images/scottie-watch-7.jpeg",
-    ],
-    inStock: true,
-  },
-  {
-    name: "Stainless Steel Bracelet",
-    category: "jewellery",
-    price: null,
-    note: "Unisex, does not tarnish",
-    description:
-      "Solid stainless steel that keeps its shine and holds up to daily wear.",
-    images: [
-      "images/steel-bracelet-1.jpeg",
-      "images/steel-bracelet-2.jpeg",
-      "images/steel-bracelet-3.jpeg",
-      "images/steel-bracelet-4.jpeg",
-      "images/steel-bracelet-5.jpeg",
-    ],
-    inStock: true,
-  },
+let PRODUCTS = [];
 
-  {
-    name: "Complete Set Sparkling Piece",
-    category: "jewellery",
-    price: null,
-    note: "Includes necklace, earrings, and bracelet",
-    description:
-      "A complete set of sparkling pieces that includes a necklace, earrings, and bracelet. Perfect for special occasions or as a gift.",
-    images: [
-      "images/complete-set-1.jpeg",
-      "images/complete-set-2.jpeg",
-      "images/complete-set-3.jpeg",
-      "images/complete-set-4.jpeg",
-    ],
-    inStock: true,
-  },
-  {
-    name: "Exquisite Jewellery Piece",
-    category: "jewellery",
-    price: null,
-    note: "Exquisite piece designed to make a statement.",
-    description:
-      "An exquisite jewellery piece designed to make a statement and add a touch of elegance to any outfit.",
-    images: [
-      "images/exquisite-piece-1.jpeg",
-      "images/exquisite-piece-2.jpeg",
-      "images/exquisite-piece-3.jpeg",
-      "images/exquisite-piece-4.jpeg",
-    ],
-    inStock: true,
-  },
-  {
-    name: "Floral Earrings",
-    category: "jewellery",
-    price: null,
-    note: "Delicate floral design, perfect for any occasion.",
-    description:
-      "Delicate floral design that adds a touch of elegance to any outfit.",
-    images: [
-      "images/floral-earrings-1.jpeg",
-      "images/floral-earrings-2.jpeg",
-      "images/floral-earrings-3.jpeg",
-    ],
-    inStock: true,
-  },
-  {
-    name: "Bangles",
-    category: "jewellery",
-    price: null,
-    note: null,
-    description: null,
-    images: ["images/Bangles-1.jpeg", "images/Bangles-2.jpeg"],
-    inStock: true,
-  },
-  {
-    name: "VC Handchain and Ring",
-    category: "jewellery",
-    price: null,
-    note: null,
-    description: null,
-    images: [
-      "images/VC-HandChain-and-ring-1.jpeg",
-      "images/VC-HandChain-and-ring-2.jpeg",
-    ],
-    inStock: true,
-  },
-  {
-    name: "Leather and Steel Bracelet",
-    category: "jewellery",
-    price: null,
-    note: "Leather band with a steel clasp",
-    description:
-      "Soft leather paired with a brushed steel clasp. Understated enough for work, warm enough for evenings.",
-    images: [
-      "images/leather-steel-bracelet-1.jpeg",
-      "images/leather-steel-bracelet-2.jpeg",
-      "images/leather-steel-bracelet-3.jpeg",
-    ],
-    inStock: true,
-  },
-  {
-    name: "Necklace without Pendant",
-    category: "jewellery",
-    price: null,
-    note: "Elegance in Every Petal",
-    description:
-      "Make an unforgettable entrance with this breathtaking necklace and matching drop earrings designed to perfectly complement your dress and add an instant touch of high-utility sparkle.",
-    images: ["images/standalone necklace.jpeg"],
-    inStock: true,
-  },
-  {
-    name: "3 Ball Stainless Steel Necklace and Earrings Set",
-    category: "jewellery",
-    price: null,
-    note: "Effortless Triple-Layer Elegance",
-    description:
-      "Make a clean statement with a tarnish-resistant, layered stainless steel chain that effortlessly shifts from casual daywear to high-fashion evening glam.",
-    images: ["images/Stainless-Steel-Necklace.jpeg"],
-    inStock: true,
-  },
-  {
-    name: "Swiss Lace",
-    category: "hair",
-    price: null,
-    note: "Flawless Melt, Effortless Glam",
-    description:
-      "Achieve the ultimate seamless look with this premium, bone-straight HD lace front wig, expertly crafted with a pre-plucked hairline and rich chocolate-brown strands that mimic natural hair movement perfectly.",
-    images: ["images/Swiss-Lace.jpeg"],
-    inStock: true,
-  },
-  {
-    name: "Wig",
-    category: "hair",
-    price: null,
-    note: "Flawless Realism, Effortless Style",
-    description:
-      "Turn heads with a show-stopping wig engineered for exceptional fullness, rich dimension, and versatile heat styling to match your every mood.",
-    images: ["images/Cajun.jpeg"],
-    inStock: true,
-  },
-  {
-    name: "Flip Bounce Wig",
-    category: "hair",
-    price: null,
-    note: "Flawless Realism, Effortless Style",
-    description:
-      "Turn heads with a show-stopping wig engineered for exceptional fullness, rich dimension, and versatile heat styling to match your every mood.",
-    images: ["images/Wig-2.jpeg"],
-    inStock: true,
-  },
-  {
-    name: "Vietnam Bone Straight Wig",
-    category: "hair",
-    price: null,
-    note: "Flawless Realism, Effortless Style",
-    description:
-      "Turn heads instantly with the razor-sharp alignment of our Vietnamese bone straight hair, featuring ultra-dense cuticles that retain a flawless, silky texture without requiring constant heat styling.",
-    images: ["images/Vietnam-Bone.jpeg"],
-    inStock: true,
-  },
-  {
-    name: "Louis Vuitton Shoes",
-    category: "footwear",
-    price: null,
-    note: "Size: 40-46",
-    description: null,
-    images: ["images/LV-shoes.jpeg"],
-    inStock: true,
-  },
-  {
-    name: "Balenciaga Footwear",
-    category: "footwear",
-    price: null,
-    note: "Size: 41-46",
-    description: null,
-    images: ["images/Balenciaga-shoes.jpeg"],
-    inStock: true,
-  },
-  {
-    name: "Shoe",
-    category: "footwear",
-    price: null,
-    note: "Size: 40-46",
-    description: null,
-    images: ["images/Shoe-1.jpeg"],
-    inStock: true,
-  },
-];
+async function loadProducts() {
+  try {
+    const res = await fetch(
+      "https://docs.google.com/spreadsheets/d/e/2PACX-1vReGKRJu5HsqpFN1claodev6n_HxxhWr3RayMJKwAbNyR4DYGTwpznMYXYr1Sw1q18MOUgXcrvUoHfB/pub?output=csv",
+    );
+    if (!res.ok) throw new Error("Sheet returned " + res.status);
+    const csv = await res.text();
+    PRODUCTS = parseSheet(csv);
+  } catch (err) {
+    rack.innerHTML =
+      '<p class="blank-state">Could not load the collection right now. Please refresh the page.</p>';
+    console.error("Sheet error:", err);
+  }
+}
+
+function parseSheet(csv) {
+  const lines = csv.trim().split("\n");
+  if (lines.length < 2) return [];
+
+  // parse one CSV line, respecting quoted fields
+  const parseLine = (line) => {
+    const fields = [];
+    let field = "";
+    let inQuotes = false;
+    for (let i = 0; i < line.length; i++) {
+      const ch = line[i];
+      if (ch === '"' && line[i + 1] === '"') {
+        field += '"';
+        i++;
+      } else if (ch === '"') {
+        inQuotes = !inQuotes;
+      } else if (ch === "," && !inQuotes) {
+        fields.push(field.trim());
+        field = "";
+      } else {
+        field += ch;
+      }
+    }
+    fields.push(field.trim());
+    return fields;
+  };
+
+  const headers = parseLine(lines[0]).map((h) => h.toLowerCase().trim());
+
+  return lines
+    .slice(1)
+    .map((line, i) => {
+      const values = parseLine(line);
+      const get = (key) => (values[headers.indexOf(key)] || "").trim();
+
+      const name = get("name");
+      if (!name) return null;
+
+      const images = ["photo_1", "photo_2", "photo_3"]
+        .map((k) => get(k))
+        .filter(Boolean);
+
+      const rawPrice = get("price").replace(/[^0-9.]/g, "");
+
+      return {
+        id: "p" + i,
+        name,
+        category: get("category") || CATEGORIES[0].key,
+        price: rawPrice ? Number(rawPrice) : null,
+        note: get("note"),
+        description: get("description"),
+        images,
+        video: get("video_url") || null,
+        inStock: get("in_stock").toLowerCase() !== "no",
+      };
+    })
+    .filter(Boolean);
+}
 
 const $ = (sel, root = document) => root.querySelector(sel);
 const $$ = (sel, root = document) => Array.from(root.querySelectorAll(sel));
@@ -294,12 +150,6 @@ const orderLink = (product) =>
       (product.price ? " (" + priceText(product.price) + ")" : "") +
       ". Is it available?",
   );
-
-/*this give every product a stable id so the viewer can find it again */
-PRODUCTS.forEach((product, index) => {
-  product.id = "p" + index;
-  if (!Array.isArray(product.images)) product.images = [];
-});
 
 /* -------------------------------------------------- shop details */
 
@@ -725,4 +575,8 @@ $("#enquiry").addEventListener("submit", (event) => {
 
 applyShopDetails();
 buildFilters();
-drawRack();
+
+(async () => {
+  await loadProducts();
+  drawRack();
+})();

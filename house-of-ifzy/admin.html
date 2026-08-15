@@ -1,0 +1,1112 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>House of Ifzy | Admin</title>
+    <meta name="robots" content="noindex,nofollow" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500&family=Jost:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      :root {
+        --cream: #f7f1e6;
+        --sand: #e4d9c6;
+        --gold: #b08d3f;
+        --gold-pale: #f0e8d4;
+        --cocoa: #3b2e25;
+        --ink: #241c16;
+        --ink-soft: #6e6055;
+        --noir: #14100d;
+        --on-noir: #efe7d9;
+        --on-noir-soft: #a2937f;
+        --ok: #3a7d44;
+        --bad: #a33a2a;
+        --bad-pale: #fdf0ee;
+        --display: "Playfair Display", Georgia, serif;
+        --body: "Jost", system-ui, sans-serif;
+        --pad: clamp(16px, 4vw, 28px);
+        --ease: 240ms cubic-bezier(0.22, 0.61, 0.36, 1);
+      }
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      html {
+        -webkit-text-size-adjust: 100%;
+        height: 100%;
+      }
+      body {
+        background: var(--cream);
+        color: var(--ink);
+        font-family: var(--body);
+        font-size: 16px;
+        line-height: 1.5;
+        min-height: 100%;
+        display: flex;
+        flex-direction: column;
+      }
+      img {
+        display: block;
+        max-width: 100%;
+      }
+      button,
+      input,
+      select,
+      textarea {
+        font: inherit;
+        color: inherit;
+      }
+      button {
+        background: none;
+        border: 0;
+        cursor: pointer;
+      }
+      :focus-visible {
+        outline: 2px solid var(--gold);
+        outline-offset: 3px;
+      }
+
+      .topbar {
+        position: sticky;
+        top: 0;
+        z-index: 60;
+        background: var(--noir);
+        color: var(--on-noir);
+        padding: 14px var(--pad);
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        flex-shrink: 0;
+      }
+      .topbar-name {
+        font-family: var(--display);
+        font-size: 16px;
+        font-weight: 500;
+        margin-right: auto;
+      }
+      .topbar-badge {
+        font-size: 10px;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--on-noir-soft);
+      }
+      .topbar-count {
+        font-size: 12px;
+        font-weight: 300;
+        color: var(--on-noir-soft);
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        padding: 13px 22px;
+        font-size: 12px;
+        font-weight: 500;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        line-height: 1;
+        border: 1px solid transparent;
+        transition:
+          background var(--ease),
+          color var(--ease),
+          border-color var(--ease),
+          opacity var(--ease);
+      }
+      .btn-gold {
+        background: var(--gold);
+        color: var(--noir);
+      }
+      .btn-gold:hover {
+        background: #9a7b35;
+      }
+      .btn-dark {
+        background: var(--noir);
+        color: var(--on-noir);
+      }
+      .btn-dark:hover {
+        background: var(--cocoa);
+      }
+      .btn-line {
+        border-color: var(--sand);
+        color: var(--ink-soft);
+      }
+      .btn-line:hover {
+        border-color: var(--ink-soft);
+        color: var(--ink);
+      }
+      .btn-danger {
+        border-color: transparent;
+        color: var(--bad);
+      }
+      .btn-danger:hover {
+        background: var(--bad-pale);
+      }
+      .btn-sm {
+        padding: 9px 14px;
+        font-size: 11px;
+      }
+      .btn-block {
+        width: 100%;
+      }
+      .btn[disabled] {
+        opacity: 0.42;
+        pointer-events: none;
+      }
+      .btn svg {
+        width: 15px;
+        height: 15px;
+        flex: none;
+      }
+
+      .shell {
+        width: 100%;
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: var(--pad);
+        flex: 1;
+      }
+
+      .list-head {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        flex-wrap: wrap;
+        margin-bottom: 22px;
+      }
+      .list-head h1 {
+        font-family: var(--display);
+        font-weight: 400;
+        font-size: clamp(1.6rem, 4vw, 2.1rem);
+        letter-spacing: -0.01em;
+        margin-right: auto;
+      }
+
+      .product-list {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .product-row {
+        display: grid;
+        grid-template-columns: 60px 1fr auto;
+        gap: 14px;
+        align-items: center;
+        background: #fff;
+        border: 1px solid var(--sand);
+        border-radius: 4px;
+        padding: 12px;
+      }
+      .product-thumb {
+        width: 60px;
+        height: 72px;
+        border-radius: 3px;
+        overflow: hidden;
+        background: var(--sand);
+        display: grid;
+        place-items: center;
+        flex: none;
+      }
+      .product-thumb img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .thumb-letter {
+        font-family: var(--display);
+        font-size: 22px;
+        color: var(--ink-soft);
+        opacity: 0.45;
+      }
+      .product-info h3 {
+        font-family: var(--display);
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 1.2;
+      }
+      .product-meta {
+        font-size: 12px;
+        font-weight: 300;
+        color: var(--ink-soft);
+        margin-top: 4px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+      }
+      .meta-tag {
+        font-size: 10px;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        padding: 3px 7px;
+        background: var(--gold-pale);
+        color: var(--gold);
+      }
+      .meta-tag.out {
+        background: #f5f5f5;
+        color: var(--ink-soft);
+      }
+      .product-acts {
+        display: flex;
+        gap: 6px;
+        flex-direction: column;
+      }
+
+      .empty-state {
+        padding: 52px var(--pad);
+        text-align: center;
+        color: var(--ink-soft);
+        font-weight: 300;
+        font-size: 15px;
+      }
+      .empty-state p {
+        max-width: 36ch;
+        margin: 0 auto;
+      }
+      .loading-row {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 44px 0;
+        color: var(--ink-soft);
+        font-weight: 300;
+      }
+      .spin {
+        animation: spin 700ms linear infinite;
+      }
+      @keyframes spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      .form-panel {
+        display: none;
+        max-width: 640px;
+        margin: 0 auto;
+      }
+      .form-panel.active {
+        display: block;
+      }
+      .list-view.hidden {
+        display: none;
+      }
+
+      .form-head {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        margin-bottom: 28px;
+      }
+      .form-head h1 {
+        font-family: var(--display);
+        font-weight: 400;
+        font-size: clamp(1.5rem, 4vw, 2rem);
+        margin-right: auto;
+      }
+
+      .form-body {
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+      }
+
+      .field {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+      .field label,
+      .field-label {
+        font-size: 10px;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--ink-soft);
+        font-weight: 500;
+      }
+      .field input,
+      .field select,
+      .field textarea {
+        width: 100%;
+        background: #fff;
+        border: 1px solid var(--sand);
+        border-radius: 3px;
+        padding: 13px 14px;
+        font-size: 15px;
+        font-weight: 300;
+        transition: border-color var(--ease);
+      }
+      .field input:focus,
+      .field select:focus,
+      .field textarea:focus {
+        outline: none;
+        border-color: var(--gold);
+      }
+      .field select {
+        appearance: none;
+        -webkit-appearance: none;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5 6 6.5 11 1.5' fill='none' stroke='%236E6055' stroke-width='1.4'/%3E%3C/svg%3E");
+        background-repeat: no-repeat;
+        background-position: right 12px center;
+        background-size: 11px;
+        padding-right: 32px;
+        cursor: pointer;
+      }
+      .field textarea {
+        resize: vertical;
+        min-height: 90px;
+      }
+      .field .hint {
+        font-size: 12px;
+        font-weight: 300;
+        color: var(--ink-soft);
+      }
+      .field .err {
+        font-size: 12px;
+        color: var(--bad);
+        display: none;
+      }
+      .field.has-error input {
+        border-color: var(--bad);
+      }
+      .field.has-error .err {
+        display: block;
+      }
+      .two {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 14px;
+      }
+
+      .toggle-wrap {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        padding: 14px;
+        background: #fff;
+        border: 1px solid var(--sand);
+        border-radius: 3px;
+      }
+      .toggle-wrap label {
+        font-size: 15px;
+        font-weight: 300;
+        flex: 1;
+        cursor: pointer;
+      }
+      .toggle {
+        position: relative;
+        width: 44px;
+        height: 26px;
+        flex: none;
+      }
+      .toggle input {
+        opacity: 0;
+        width: 0;
+        height: 0;
+        position: absolute;
+      }
+      .toggle-track {
+        position: absolute;
+        inset: 0;
+        border-radius: 999px;
+        background: var(--sand);
+        transition: background var(--ease);
+        cursor: pointer;
+      }
+      .toggle-track::after {
+        content: "";
+        position: absolute;
+        left: 3px;
+        top: 3px;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        background: #fff;
+        transition: transform var(--ease);
+      }
+      .toggle input:checked + .toggle-track {
+        background: var(--gold);
+      }
+      .toggle input:checked + .toggle-track::after {
+        transform: translateX(18px);
+      }
+
+      .photo-field {
+        display: grid;
+        grid-template-columns: 72px 1fr;
+        gap: 12px;
+        align-items: start;
+      }
+      .photo-preview {
+        width: 72px;
+        height: 88px;
+        border-radius: 3px;
+        overflow: hidden;
+        background: var(--sand);
+        display: grid;
+        place-items: center;
+        flex: none;
+        border: 1px solid var(--sand);
+      }
+      .photo-preview img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .preview-letter {
+        font-family: var(--display);
+        font-size: 20px;
+        color: var(--ink-soft);
+        opacity: 0.35;
+      }
+      .preview-bad {
+        font-size: 9px;
+        color: var(--bad);
+        text-align: center;
+        padding: 4px;
+        display: none;
+      }
+
+      .form-actions {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+        padding-top: 8px;
+        border-top: 1px solid var(--sand);
+        margin-top: 8px;
+      }
+
+      .toast {
+        position: fixed;
+        bottom: 22px;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 99;
+        padding: 13px 22px;
+        background: var(--noir);
+        color: var(--on-noir);
+        font-size: 14px;
+        font-weight: 400;
+        box-shadow: 0 8px 28px rgba(0, 0, 0, 0.28);
+        transition:
+          opacity var(--ease),
+          transform var(--ease);
+        pointer-events: none;
+        white-space: nowrap;
+      }
+      .toast.ok {
+        background: var(--ok);
+      }
+      .toast.bad {
+        background: var(--bad);
+      }
+      .toast.hidden {
+        opacity: 0;
+        transform: translateX(-50%) translateY(8px);
+      }
+
+      .setup-notice {
+        background: #fff;
+        border: 1px solid var(--sand);
+        border-radius: 4px;
+        padding: 22px var(--pad);
+        margin-bottom: 24px;
+      }
+      .setup-notice h2 {
+        font-family: var(--display);
+        font-size: 20px;
+        font-weight: 400;
+        margin-bottom: 10px;
+      }
+      .setup-notice p {
+        font-size: 14px;
+        font-weight: 300;
+        color: var(--ink-soft);
+        margin-bottom: 6px;
+      }
+
+      @media (max-width: 600px) {
+        .two {
+          grid-template-columns: 1fr;
+        }
+        .product-row {
+          grid-template-columns: 52px 1fr;
+          gap: 10px;
+        }
+        .product-acts {
+          flex-direction: row;
+          grid-column: 1/-1;
+        }
+        .product-thumb {
+          width: 52px;
+          height: 62px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="topbar">
+      <div style="flex: 1; min-width: 0">
+        <p class="topbar-name">House of Ifzy</p>
+        <p class="topbar-badge">Admin &middot; Private</p>
+      </div>
+      <span class="topbar-count" id="topbar-count"></span>
+    </div>
+
+    <div class="shell">
+      <div class="setup-notice" id="setup-notice" hidden>
+        <h2>One step left</h2>
+        <p>
+          Paste your Apps Script web app URL into
+          <strong>APPS_SCRIPT_URL</strong> near the top of the script in this
+          file to enable saving.
+        </p>
+        <p>
+          You can still browse products, but saving changes will not work until
+          that URL is set.
+        </p>
+      </div>
+
+      <div class="list-view" id="list-view">
+        <div class="list-head">
+          <h1>Products</h1>
+          <button class="btn btn-gold" id="btn-add">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.2"
+              aria-hidden="true"
+            >
+              <line x1="12" y1="5" x2="12" y2="19" />
+              <line x1="5" y1="12" x2="19" y2="12" />
+            </svg>
+            Add product
+          </button>
+          <button class="btn btn-line btn-sm" id="btn-refresh" title="Refresh">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.2"
+              aria-hidden="true"
+            >
+              <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8" />
+              <path d="M3 3v5h5" />
+            </svg>
+          </button>
+        </div>
+        <div class="product-list" id="product-list"></div>
+      </div>
+
+      <div class="form-panel" id="form-panel">
+        <div class="form-head">
+          <button class="btn btn-line btn-sm" id="btn-back">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.2"
+              aria-hidden="true"
+            >
+              <polyline points="15 18 9 12 15 6" />
+            </svg>
+            Back
+          </button>
+          <h1 id="form-title">Add a product</h1>
+        </div>
+
+        <form id="product-form" novalidate>
+          <div class="form-body">
+            <div class="field" id="f-name-field">
+              <label for="f-name">Product name</label>
+              <input
+                id="f-name"
+                type="text"
+                maxlength="120"
+                placeholder="Leather and Steel Bracelet"
+                required
+              />
+              <p class="err">Please enter the product name.</p>
+            </div>
+
+            <div class="two">
+              <div class="field">
+                <label for="f-cat">Category</label>
+                <select id="f-cat">
+                  <option value="jewellery">Jewellery</option>
+                  <option value="watches">Watches</option>
+                  <option value="eyewear">Eyewear</option>
+                  <option value="hair">Hair</option>
+                  <option value="footwear">Footwear</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="f-price">Price (numbers only)</label>
+                <input
+                  id="f-price"
+                  type="number"
+                  min="0"
+                  step="1"
+                  placeholder="Leave empty for message for price"
+                />
+              </div>
+            </div>
+
+            <div class="field">
+              <label for="f-note">Short line (shown on the card)</label>
+              <input
+                id="f-note"
+                type="text"
+                maxlength="200"
+                placeholder="Unisex, one size, does not tarnish"
+              />
+              <p class="hint">
+                Sizes, shades, material, or what makes it special.
+              </p>
+            </div>
+
+            <div class="field">
+              <label for="f-desc">Full description (shown when tapped)</label>
+              <textarea
+                id="f-desc"
+                maxlength="1200"
+                placeholder="Write a few sentences about the piece."
+              ></textarea>
+            </div>
+
+            <div class="field">
+              <span class="field-label">Photos</span>
+              <p class="hint" style="margin-bottom: 12px">
+                Upload to <strong>cloudinary.com</strong> (free), copy the URL
+                and paste it below.
+              </p>
+              <div style="display: flex; flex-direction: column; gap: 12px">
+                <div class="photo-field">
+                  <div class="photo-preview" id="prev-1">
+                    <span class="preview-letter">1</span>
+                    <span class="preview-bad">Bad URL</span>
+                  </div>
+                  <div class="field" style="margin: 0">
+                    <label for="f-photo1">Photo 1 (main)</label>
+                    <input
+                      id="f-photo1"
+                      type="url"
+                      placeholder="https://res.cloudinary.com/..."
+                    />
+                  </div>
+                </div>
+
+                <div class="photo-field">
+                  <div class="photo-preview" id="prev-2">
+                    <span class="preview-letter">2</span>
+                    <span class="preview-bad">Bad URL</span>
+                  </div>
+                  <div class="field" style="margin: 0">
+                    <label for="f-photo2">Photo 2</label>
+                    <input id="f-photo2" type="url" placeholder="Optional" />
+                  </div>
+                </div>
+
+                <div class="photo-field">
+                  <div class="photo-preview" id="prev-3">
+                    <span class="preview-letter">3</span>
+                    <span class="preview-bad">Bad URL</span>
+                  </div>
+                  <div class="field" style="margin: 0">
+                    <label for="f-photo3">Photo 3</label>
+                    <input id="f-photo3" type="url" placeholder="Optional" />
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="field">
+              <label for="f-video">Video URL (optional)</label>
+              <input
+                id="f-video"
+                type="url"
+                placeholder="https://www.youtube.com/embed/VIDEO_ID"
+              />
+              <p class="hint">
+                YouTube: click Share then Embed and copy the src URL from the
+                iframe code.
+              </p>
+            </div>
+
+            <div class="toggle-wrap">
+              <label for="f-stock">In stock</label>
+              <span class="toggle">
+                <input type="checkbox" id="f-stock" checked />
+                <span class="toggle-track"></span>
+              </span>
+            </div>
+
+            <p
+              id="form-error"
+              style="font-size: 13px; color: var(--bad); display: none"
+            ></p>
+
+            <div class="form-actions">
+              <button
+                type="submit"
+                class="btn btn-gold"
+                id="btn-save"
+                style="flex: 1"
+              >
+                Save product
+              </button>
+              <button type="button" class="btn btn-line" id="btn-cancel">
+                Cancel
+              </button>
+              <button
+                type="button"
+                class="btn btn-danger btn-sm"
+                id="btn-delete"
+                hidden
+              >
+                Delete
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div class="toast hidden" id="toast" role="status" aria-live="polite"></div>
+
+    <script type="module">
+      const SHEET_URL =
+        "https://docs.google.com/spreadsheets/d/e/2PACX-1vReGKRJu5HsqpFN1claodev6n_HxxhWr3RayMJKwAbNyR4DYGTwpznMYXYr1Sw1q18MOUgXcrvUoHfB/pub?output=csv";
+      const APPS_SCRIPT_URL =
+        "https://script.google.com/macros/s/AKfycbyoltoeYmnUJuriQtJFydwLjQygrVifFN7dAy8t0wPpwqXEPRO4QyqdCI8JGnFpkfE6/exec";
+
+      const CATEGORIES = [
+        { key: "jewellery", label: "Jewellery" },
+        { key: "watches", label: "Watches" },
+        { key: "eyewear", label: "Eyewear" },
+        { key: "hair", label: "Hair" },
+        { key: "footwear", label: "Footwear" },
+      ];
+
+      const $ = (sel, r = document) => r.querySelector(sel);
+      const $$ = (sel, r = document) => Array.from(r.querySelectorAll(sel));
+      const esc = (s) =>
+        String(s ?? "").replace(
+          /[&<>"']/g,
+          (c) =>
+            ({
+              "&": "&amp;",
+              "<": "&lt;",
+              ">": "&gt;",
+              '"': "&quot;",
+              "'": "&#39;",
+            })[c],
+        );
+      const money = (n) => "\u20A6" + Number(n).toLocaleString("en-NG");
+      const labelOf = (key) =>
+        (CATEGORIES.find((c) => c.key === key) || { label: key }).label;
+
+      let products = [];
+      let editingProduct = null;
+
+      function parseCsv(csv) {
+        const lines = csv.trim().split("\n");
+        if (lines.length < 2) return [];
+        const parseLine = (line) => {
+          const fields = [];
+          let field = "",
+            inQ = false;
+          for (let i = 0; i < line.length; i++) {
+            const ch = line[i];
+            if (ch === '"' && line[i + 1] === '"') {
+              field += '"';
+              i++;
+            } else if (ch === '"') {
+              inQ = !inQ;
+            } else if (ch === "," && !inQ) {
+              fields.push(field.trim());
+              field = "";
+            } else field += ch;
+          }
+          fields.push(field.trim());
+          return fields;
+        };
+        const headers = parseLine(lines[0]).map((h) => h.toLowerCase().trim());
+        const get = (vals, key) => (vals[headers.indexOf(key)] || "").trim();
+        return lines
+          .slice(1)
+          .map((line, i) => {
+            const v = parseLine(line);
+            const name = get(v, "name");
+            if (!name) return null;
+            const rawPrice = get(v, "price").replace(/[^0-9.]/g, "");
+            return {
+              rowNum: i + 2,
+              name,
+              category: get(v, "category"),
+              price: rawPrice ? Number(rawPrice) : null,
+              note: get(v, "note"),
+              description: get(v, "description"),
+              photo_1: get(v, "photo_1"),
+              photo_2: get(v, "photo_2"),
+              photo_3: get(v, "photo_3"),
+              video_url: get(v, "video_url"),
+              in_stock: get(v, "in_stock").toLowerCase() !== "no",
+            };
+          })
+          .filter(Boolean);
+      }
+
+      async function loadProducts() {
+        const list = $("#product-list");
+        list.innerHTML =
+          '<div class="loading-row"><svg class="spin" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>Loading...</div>';
+        try {
+          const res = await fetch(SHEET_URL + "&t=" + Date.now());
+          if (!res.ok) throw new Error("Sheet returned " + res.status);
+          products = parseCsv(await res.text());
+          renderList();
+        } catch (err) {
+          list.innerHTML =
+            '<div class="empty-state"><p>Could not load products. Check your sheet URL and refresh.</p><p style="margin-top:8px;font-size:12px;color:var(--bad)">' +
+            esc(err.message) +
+            "</p></div>";
+        }
+      }
+
+      function renderList() {
+        const list = $("#product-list");
+        $("#topbar-count").textContent =
+          products.length + " product" + (products.length !== 1 ? "s" : "");
+        if (!products.length) {
+          list.innerHTML =
+            '<div class="empty-state"><p>No products yet. Tap "Add product" to add your first one.</p></div>';
+          return;
+        }
+        list.innerHTML = products
+          .map(
+            (p) => `
+    <div class="product-row" data-row="${p.rowNum}">
+      <div class="product-thumb">
+        ${
+          p.photo_1
+            ? '<img src="' +
+              esc(p.photo_1) +
+              '" alt="" loading="lazy" onerror="this.style.display=\'none\';this.nextElementSibling.style.display=\'grid\'">' +
+              '<span class="thumb-letter" style="display:none">' +
+              esc(p.name.charAt(0)) +
+              "</span>"
+            : '<span class="thumb-letter">' + esc(p.name.charAt(0)) + "</span>"
+        }
+      </div>
+      <div class="product-info">
+        <h3>${esc(p.name)}</h3>
+        <div class="product-meta">
+          <span class="meta-tag">${esc(labelOf(p.category))}</span>
+          ${p.price !== null ? "<span>" + esc(money(p.price)) + "</span>" : '<span style="font-style:italic">Message for price</span>'}
+          ${!p.in_stock ? '<span class="meta-tag out">Sold out</span>' : ""}
+        </div>
+      </div>
+      <div class="product-acts">
+        <button class="btn btn-dark btn-sm" data-act="edit" data-row="${p.rowNum}">Edit</button>
+      </div>
+    </div>`,
+          )
+          .join("");
+      }
+
+      $("#product-list").addEventListener("click", (e) => {
+        const btn = e.target.closest("[data-act]");
+        if (!btn) return;
+        const product = products.find(
+          (p) => p.rowNum === Number(btn.dataset.row),
+        );
+        if (product && btn.dataset.act === "edit") openForm(product);
+      });
+
+      function openForm(product = null) {
+        editingProduct = product;
+        $("#form-title").textContent = product
+          ? "Edit product"
+          : "Add a product";
+        $("#btn-delete").hidden = !product;
+        $("#btn-save").textContent = product ? "Save changes" : "Save product";
+        $("#form-error").style.display = "none";
+        $("#f-name").value = product?.name || "";
+        $("#f-cat").value = product?.category || "jewellery";
+        $("#f-price").value = product?.price ?? "";
+        $("#f-note").value = product?.note || "";
+        $("#f-desc").value = product?.description || "";
+        $("#f-photo1").value = product?.photo_1 || "";
+        $("#f-photo2").value = product?.photo_2 || "";
+        $("#f-photo3").value = product?.photo_3 || "";
+        $("#f-video").value = product?.video_url || "";
+        $("#f-stock").checked = product ? product.in_stock : true;
+        updatePreview("f-photo1", "prev-1");
+        updatePreview("f-photo2", "prev-2");
+        updatePreview("f-photo3", "prev-3");
+        $$(".field.has-error").forEach((f) => f.classList.remove("has-error"));
+        $("#list-view").classList.add("hidden");
+        $("#form-panel").classList.add("active");
+        window.scrollTo(0, 0);
+      }
+
+      function closeForm() {
+        $("#form-panel").classList.remove("active");
+        $("#list-view").classList.remove("hidden");
+        editingProduct = null;
+      }
+
+      $("#btn-add").addEventListener("click", () => openForm(null));
+      $("#btn-back").addEventListener("click", closeForm);
+      $("#btn-cancel").addEventListener("click", closeForm);
+      $("#btn-refresh").addEventListener("click", loadProducts);
+
+      function updatePreview(inputId, previewId) {
+        const url = $("#" + inputId).value.trim();
+        const preview = $("#" + previewId);
+        const letter = $(".preview-letter", preview);
+        const bad = $(".preview-bad", preview);
+        let img = $("img", preview);
+        if (!url) {
+          if (img) img.remove();
+          letter.style.display = "grid";
+          bad.style.display = "none";
+          return;
+        }
+        if (!img) {
+          img = document.createElement("img");
+          img.alt = "";
+          preview.insertBefore(img, letter);
+        }
+        img.style.display = "";
+        letter.style.display = "none";
+        bad.style.display = "none";
+        img.onload = () => {
+          bad.style.display = "none";
+        };
+        img.onerror = () => {
+          img.style.display = "none";
+          letter.style.display = "grid";
+          bad.style.display = "block";
+        };
+        img.src = url;
+      }
+
+      ["f-photo1", "f-photo2", "f-photo3"].forEach((id, i) => {
+        let timer;
+        $("#" + id).addEventListener("input", () => {
+          clearTimeout(timer);
+          timer = setTimeout(() => updatePreview(id, "prev-" + (i + 1)), 500);
+        });
+      });
+
+      $("#product-form").addEventListener("submit", async (e) => {
+        e.preventDefault();
+        const name = $("#f-name").value.trim();
+        if (!name) {
+          $("#f-name-field").classList.add("has-error");
+          $("#f-name").focus();
+          return;
+        }
+        $("#f-name-field").classList.remove("has-error");
+        const data = {
+          action: editingProduct ? "update" : "add",
+          name,
+          category: $("#f-cat").value,
+          price: $("#f-price").value.trim(),
+          note: $("#f-note").value.trim(),
+          description: $("#f-desc").value.trim(),
+          photo_1: $("#f-photo1").value.trim(),
+          photo_2: $("#f-photo2").value.trim(),
+          photo_3: $("#f-photo3").value.trim(),
+          video_url: $("#f-video").value.trim(),
+          in_stock: $("#f-stock").checked ? "yes" : "no",
+        };
+        if (editingProduct) data.rowIndex = String(editingProduct.rowNum);
+        await submit(data, "Saved");
+      });
+
+      $("#btn-delete").addEventListener("click", async () => {
+        if (!editingProduct) return;
+        if (
+          !confirm(
+            'Delete "' + editingProduct.name + '"? This cannot be undone.',
+          )
+        )
+          return;
+        await submit(
+          { action: "delete", rowIndex: String(editingProduct.rowNum) },
+          "Deleted",
+        );
+      });
+
+      async function submit(data, successVerb) {
+        if (APPS_SCRIPT_URL === "PASTE_APPS_SCRIPT_URL_HERE") {
+          showToast("Apps Script URL not set yet.", "bad");
+          return;
+        }
+        const btn = $("#btn-save");
+        const errEl = $("#form-error");
+        btn.disabled = true;
+        btn.textContent = "Saving...";
+        errEl.style.display = "none";
+        try {
+          const res = await fetch(APPS_SCRIPT_URL, {
+            method: "POST",
+            body: new URLSearchParams(data),
+          });
+          let json;
+          try {
+            json = await res.json();
+          } catch {
+            json = {
+              ok: false,
+              error: "Could not read the response from Google.",
+            };
+          }
+          if (json.ok) {
+            showToast(successVerb + " successfully.", "ok");
+            closeForm();
+            setTimeout(loadProducts, 1400);
+          } else {
+            throw new Error(json.error || "Something went wrong.");
+          }
+        } catch (err) {
+          errEl.textContent = err.message;
+          errEl.style.display = "block";
+          console.error(err);
+        } finally {
+          btn.disabled = false;
+          btn.textContent = editingProduct ? "Save changes" : "Save product";
+        }
+      }
+
+      let toastTimer;
+      function showToast(message, type = "ok") {
+        const t = $("#toast");
+        t.textContent = message;
+        t.className = "toast " + type;
+        clearTimeout(toastTimer);
+        toastTimer = setTimeout(() => t.classList.add("hidden"), 3200);
+      }
+
+      if (APPS_SCRIPT_URL === "PASTE_APPS_SCRIPT_URL_HERE")
+        $("#setup-notice").hidden = false;
+
+      loadProducts();
+    </script>
+  </body>
+</html>
